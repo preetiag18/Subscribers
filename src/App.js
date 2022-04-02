@@ -10,7 +10,7 @@ function App() {
   const [ subscriberList, setSubscriberList ] = useState([]);
   
   useEffect(async() => {
-    let res = await fetch("http://localhost:8080/showdetails");
+    let res = await fetch("https://subscriber-server.herokuapp.com/showdetails");
     let responseData = await res.json();
     console.log(responseData);
     let updatedData = responseData.map(item => {

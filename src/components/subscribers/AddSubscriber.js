@@ -42,7 +42,7 @@ const AddSubscriber = (props) =>{
         console.log('updatede status is' ,events.target.value )
 
         try {
-            let res = await fetch("http://localhost:8080/add-user", {
+            let res = await fetch("https://subscriber-server.herokuapp.com/add-user", {
               method: "POST",
               headers: {
                 'Content-Type': 'application/json',
