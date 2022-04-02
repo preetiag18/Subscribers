@@ -4,7 +4,7 @@ import "./ErrorModal.css";
 const ErrorModal = (props) =>{
 
     return (
-        <div className="backdrop" onClick={props.onClose}>
+        <div className="backdrop" onClick = {props.onClose}>
         <Container className = "modal">
             <header className="header">
                 <h2>{props.title}</h2>

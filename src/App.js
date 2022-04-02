@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import AddSubscriber from './components/subscribers/AddSubscriber';
 import Container from './components/templates/Container';
@@ -9,23 +8,26 @@ function App() {
 
   const [ subscriberList, setSubscriberList ] = useState([]);
   
-  useEffect(async() => {
-    let res = await fetch("https://subscriber-server.herokuapp.com/showdetails");
-    let responseData = await res.json();
-    console.log(responseData);
-    let updatedData = responseData.map(item => {
-      return ({
-        name: item.first_name,
-        pincode: item.pincode,
-        id: item._id
+  useEffect(() => {
+    const getData = async() => {
+      let res = await fetch("https://subscriber-server.herokuapp.com/showdetails");
+      let responseData = await res.json();
+      console.log(responseData);
+      let updatedData = responseData.map(item => {
+        return ({
+          name: item.first_name,
+          pincode: item.pincode,
+          id: item._id
+        })
       })
-    })
-    setSubscriberList((prevData) => {
-      return [
-        ...prevData,
-        ...updatedData
-      ]
-    })
+      setSubscriberList((prevData) => {
+        return [
+          ...prevData,
+          ...updatedData
+        ]
+      })
+    }
+    getData();
   }, []);
 
     const onAddSubscriberHandler = (sname,spincode,sid) => {
