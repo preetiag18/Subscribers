@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Button from '../templates/Button';
 import Container from '../templates/Container';
 import './SubscriberList.css';
