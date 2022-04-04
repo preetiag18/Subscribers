@@ -1,17 +1,21 @@
+import { useState } from 'react';
 import Button from '../templates/Button';
 import Container from '../templates/Container';
 import './SubscriberList.css';
 
 const SubscriberList = (props) => {
-
+    
    const onDeleteClickHandler = async (x) => {
-    await fetch("https://subscriber-server.herokuapp.com/" + x, {
+   let res =  await fetch("https://subscriber-server.herokuapp.com/" + x, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json',
         },
-    
-      });   
+    });  
+    if(res.status === 200){
+        props.onDelete(x);
+    }
+      
    } 
     return (
         <Container className = 'subscribers'>

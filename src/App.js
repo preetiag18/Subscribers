@@ -3,6 +3,7 @@ import AddSubscriber from './components/subscribers/AddSubscriber';
 import Container from './components/templates/Container';
 import SubscriberList from './components/subscribers/SubscriberList';
 import { useEffect, useState } from 'react';
+import Button from './components/templates/Button';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
     getData();
   }, []);
 
+
     const onAddSubscriberHandler = (sname,spincode,sid) => {
       setSubscriberList((prevState) => {
         return [
@@ -43,10 +45,19 @@ function App() {
       })
     }
 
+    const onDeleteHandlerList = (sid) => { 
+      console.log("deleted");
+      setSubscriberList((prevState) =>{
+        return [...prevState].filter((item) =>{
+          return item.id !== sid
+        })
+      })
+    }
+
   return (
     <Container>
       <AddSubscriber onAddSubscriber = {onAddSubscriberHandler}></AddSubscriber>
-      <SubscriberList list = {subscriberList}></SubscriberList>
+      <SubscriberList list = {subscriberList} onDelete = {onDeleteHandlerList}></SubscriberList>
     </Container>
   );
 }
